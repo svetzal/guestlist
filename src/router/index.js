@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { checkIfAuthenticated } from '@/lib/secret'
 
 const routes = [
   {
@@ -24,7 +25,7 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to) => {
-  if (!window.sessionStorage["authenticated"] && to.name!=="home")
+  if (!checkIfAuthenticated() && to.name!=="home")
       return {name: "home"}
 })
 

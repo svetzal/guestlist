@@ -1,14 +1,16 @@
 <template>
   <h1 class="splash">Holly and Dalton, 2022</h1>
   <div v-bind:hidden="authenticated">
-  <form @submit.prevent="checkCode">
-  <input class="secret" v-model="code" type="text" size="8" placeholder="Secret Code">
-  <input class="secret" type="submit" value="Submit">
-  </form>
+    <form @submit.prevent="checkCode">
+      <input class="secret" v-model="code" type="text" size="8" placeholder="Secret Code">
+      <input class="secret" type="submit" value="Submit">
+    </form>
   </div>
 </template>
 
 <script>
+import { checkIfAuthenticated, saveAuthenticationState, checkAuthenticationCode } from '@/lib/secret';
+
 export default {
   name: 'HomeView',
   created() {
@@ -19,19 +21,14 @@ export default {
   data() {
     return {
       code: '',
-      authenticated: window.sessionStorage["authenticated"],
+      authenticated: checkIfAuthenticated(),
     };
   },
   methods: {
     checkCode() {
-      if (this.code == "Sweet!") {
-        this.saveAuthentication();
+      if (checkAuthenticationCode(this.code)) {
+        saveAuthenticationState(this, true, {name: "guests"});
       }
-    },
-    saveAuthentication() {
-        this.authenticated = true;
-        window.sessionStorage["authenticated"] = true;
-        this.$router.push({name: "guests"});
     }
   }
 }
@@ -49,11 +46,14 @@ h1.splash {
 }
 
 @media only screen and (max-width: 600px) {
-  h1.splash { font-size: 13vh; }
+  h1.splash {
+    font-size: 13vh;
+  }
 }
 
 @media only screen and (max-width: 840px) {
-  h1.splash { font-size: 15vh; }
+  h1.splash {
+    font-size: 15vh;
+  }
 }
-
 </style>
