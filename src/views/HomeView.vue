@@ -9,6 +9,11 @@
 <script>
 export default {
   name: 'HomeView',
+  created() {
+    // https://www.hollyanddalton2022.com/?c=Sweet!
+    this.code = this.$router.currentRoute._value.query.c;
+    this.checkCode();
+  },
   data() {
     return {
       code: '',
@@ -18,10 +23,13 @@ export default {
   methods: {
     checkCode() {
       if (this.code == "Sweet!") {
+        this.saveAuthentication();
+      }
+    },
+    saveAuthentication() {
         this.authenticated = true;
         window.sessionStorage["authenticated"] = true;
         this.$router.push({name: "guests"});
-      }
     }
   }
 }
