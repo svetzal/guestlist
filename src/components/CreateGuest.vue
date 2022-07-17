@@ -46,14 +46,19 @@ export default {
 <style lang="scss">
 div.new {
     margin: 1em;
-    padding: 0.5em;
     border: 1px solid black;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
     width: 80%;
     background-color: rgba(255, 255, 255, 0.85);
 
     h2 {
+        margin: 0.5em;
         text-align: left;
+    }
+
+    input {
+        padding: 4pt;
+        margin: 4pt;
     }
 }
 </style>
