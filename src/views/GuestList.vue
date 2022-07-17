@@ -86,7 +86,7 @@ export default {
     border: 1px solid black;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
     width: 80%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.85);
 
     th {
       border-bottom: 1px solid black;
@@ -104,7 +104,7 @@ export default {
     border: 1px solid black;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
     width: 80%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.85);
 
     h2 {
       text-align: left;
