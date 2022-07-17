@@ -11,6 +11,7 @@ export default {
 <style lang="scss">
 h1.splash {
   color: black;
-  font-size: 10em;
+  font-size: 20vh;
+  text-shadow: 0 0 10pt rgba(255,255,255,1.0);
 }
 </style>
