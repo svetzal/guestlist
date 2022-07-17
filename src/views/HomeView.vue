@@ -1,8 +1,10 @@
 <template>
   <h1 class="splash">Holly and Dalton, 2022</h1>
   <div v-bind:hidden="authenticated">
+  <form @submit.prevent="checkCode">
   <input class="secret" v-model="code" type="text" size="8" placeholder="Secret Code">
-  <button v-on:click="checkCode" class="secret">Submit</button>
+  <input class="secret" type="submit" value="Submit">
+  </form>
   </div>
 </template>
 

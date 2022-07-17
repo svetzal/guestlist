@@ -23,4 +23,9 @@ const router = createRouter({
   routes
 })
 
+router.beforeEach(async (to) => {
+  if (!window.sessionStorage["authenticated"] && to.name!=="home")
+      return {name: "home"}
+})
+
 export default router
