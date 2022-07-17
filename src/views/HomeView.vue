@@ -1,7 +1,7 @@
 <template>
   <h1 class="splash">Holly and Dalton, 2022</h1>
   <div v-bind:hidden="authenticated">
-  <input class="secret" v-model="code" type="text" placeholder="Secret Code">
+  <input class="secret" v-model="code" type="text" size="8" placeholder="Secret Code">
   <button v-on:click="checkCode" class="secret">Submit</button>
   </div>
 </template>
@@ -45,4 +45,13 @@ h1.splash {
 .secret {
   font-size: 2em;
 }
+
+@media only screen and (max-width: 600px) {
+  h1.splash { font-size: 13vh; }
+}
+
+@media only screen and (max-width: 840px) {
+  h1.splash { font-size: 15vh; }
+}
+
 </style>
