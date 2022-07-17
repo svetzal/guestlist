@@ -3,12 +3,10 @@
     <h1>Guest List</h1>
     <div class="new">
       <h2>RSVP Me!</h2>
-      <form>
         <input type="text" v-model="name" placeholder="Name">
         <input type="text" v-model="email" placeholder="Email">
         <input type="text" v-model="phone" placeholder="Phone Number">
         <button v-on:click="createGuest">RVSP Guest</button>
-      </form>
     </div>
     <table class="guests">
       <tr>
@@ -19,7 +17,7 @@
       <tr v-for="guest in guests" :key="guest.id">
         <td>{{ guest.name }}</td>
         <td>{{ guest.email }}</td>
-        <td>{{ guest.phone }}</td>
+        <td>{{ formatPhone(guest.phone) }}</td>
       </tr>
     </table>
   </div>
@@ -49,7 +47,7 @@ export default {
     async createGuest() {
       const { name, email, phone } = this;
       if (!this.name) return;
-      const guest = { name, email, phone };
+      const guest = { name, email, phone: this.stripPhone(phone) };
       await API.graphql({
         query: createGuest,
         variables: { input: guest },
@@ -71,6 +69,12 @@ export default {
             this.guests = [...this.guests, guest];
           }
         })
+    },
+    formatPhone(value) {
+      return value.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+    },
+    stripPhone(value) {
+      return value.replace(/[^\d]/g, "");
     }
   }
 }
