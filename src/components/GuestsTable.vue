@@ -7,8 +7,20 @@
         </tr>
         <tr v-for="guest in guests" :key="guest.id">
             <td>{{ guest.name }}</td>
-            <td>{{ guest.email }}</td>
-            <td>{{ formatPhone(guest.phone) }}</td>
+            <td>
+                <span v-if="guest.email">
+                    <a href="mailto:{{ guest.email }}">
+                        {{ guest.email }}
+                    </a>
+                </span>
+            </td>
+            <td>
+                <span v-if="guest.phone">
+                    <a href="tel:{{ guest.phone }}">
+                        {{ formatPhone(guest.phone) }}
+                    </a>
+                </span>
+            </td>
         </tr>
     </table>
 </template>
