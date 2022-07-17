@@ -4,9 +4,9 @@
     <div class="new">
       <h2>RSVP Me!</h2>
       <form>
-        <input type="text" v-model="name" placeholder="Guest Name">
-        <input type="text" v-model="email" placeholder="Guest Email">
-        <input type="text" v-model="phone" placeholder="Guest Phone Number">
+        <input type="text" v-model="name" placeholder="Name">
+        <input type="text" v-model="email" placeholder="Email">
+        <input type="text" v-model="phone" placeholder="Phone Number">
         <button v-on:click="createGuest">RVSP Guest</button>
       </form>
     </div>
