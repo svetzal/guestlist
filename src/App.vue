@@ -8,7 +8,7 @@
 </template>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Meow+Script&display=swap');
+@import url(https://fonts.googleapis.com/css2?family=Meow+Script&display=swap);
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -19,7 +19,7 @@
 }
 
 h1,h2,h3 {
-  font-family: "Meow Script";
+  font-family: "Meow Script", cursive;
   margin: 0;
 }
 
