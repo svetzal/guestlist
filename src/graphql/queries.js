@@ -8,6 +8,9 @@ export const getGuest = /* GraphQL */ `
       name
       email
       phone
+      attending
+      dietaryRequirements
+      meal
       createdAt
       updatedAt
     }
@@ -25,6 +28,9 @@ export const listGuests = /* GraphQL */ `
         name
         email
         phone
+        attending
+        dietaryRequirements
+        meal
         createdAt
         updatedAt
       }

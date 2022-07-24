@@ -8,6 +8,9 @@ export const onCreateGuest = /* GraphQL */ `
       name
       email
       phone
+      attending
+      dietaryRequirements
+      meal
       createdAt
       updatedAt
     }
@@ -20,6 +23,9 @@ export const onUpdateGuest = /* GraphQL */ `
       name
       email
       phone
+      attending
+      dietaryRequirements
+      meal
       createdAt
       updatedAt
     }
@@ -32,6 +38,9 @@ export const onDeleteGuest = /* GraphQL */ `
       name
       email
       phone
+      attending
+      dietaryRequirements
+      meal
       createdAt
       updatedAt
     }

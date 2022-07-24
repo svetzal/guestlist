@@ -11,6 +11,9 @@ export const createGuest = /* GraphQL */ `
       name
       email
       phone
+      attending
+      dietaryRequirements
+      meal
       createdAt
       updatedAt
     }
@@ -26,6 +29,9 @@ export const updateGuest = /* GraphQL */ `
       name
       email
       phone
+      attending
+      dietaryRequirements
+      meal
       createdAt
       updatedAt
     }
@@ -41,6 +47,9 @@ export const deleteGuest = /* GraphQL */ `
       name
       email
       phone
+      attending
+      dietaryRequirements
+      meal
       createdAt
       updatedAt
     }
