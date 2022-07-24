@@ -1,6 +1,6 @@
 <template>
     <div class="new">
-        <h2>RSVP Me!</h2>
+        <h2>RSVP Guest</h2>
         <form @submit.prevent="createGuest">
             <input type="text" v-model="name" placeholder="Name">
             <input type="text" v-model="email" placeholder="Email">

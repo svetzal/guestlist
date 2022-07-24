@@ -1,7 +1,8 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/guests">Guest List</router-link>
+    <router-link to="/guests">Guest List</router-link> |
+    <router-link to="/guests/add">RSVP Me!</router-link>
   </nav>
   <router-view/>
 </template>

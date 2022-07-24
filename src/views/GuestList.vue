@@ -1,19 +1,17 @@
 <template>
   <div id="guestlist">
     <h1>Guest List</h1>
-    <CreateGuest />
+    <router-link to="/guests/add">RSVP Me!</router-link>
     <GuestsTable />
   </div>
 </template>
 
 <script>
-import CreateGuest from '../components/CreateGuest.vue';
 import GuestsTable from '../components/GuestsTable.vue';
 
 export default {
   name: 'guest-list',
   components: {
-    CreateGuest,
     GuestsTable,
   },
 }
