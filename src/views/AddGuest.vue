@@ -1,5 +1,5 @@
 <template>
-  <div id="guestlist">
+  <div class="screen">
     <h1>RSVP</h1>
     <CreateGuest />
   </div>

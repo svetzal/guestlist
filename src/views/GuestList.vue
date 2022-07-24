@@ -1,5 +1,5 @@
 <template>
-  <div id="guestlist">
+  <div class="screen">
     <h1>Guest List</h1>
     <router-link to="/guests/add">RSVP Me!</router-link>
     <GuestsTable />
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss">
-#guestlist {
+.screen {
   display: flex;
   flex-direction: column;
   align-items: center;
