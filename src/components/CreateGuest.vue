@@ -9,11 +9,16 @@
       <label for="phone">Phone Number</label>
       <input id="phone" type="text" v-model="phone" placeholder="Phone Number">
       <label for="attending">Are you able to attend?</label>
-      <div>
-        <input type="radio" id="attending-yes" name="attending" v-bind:value="true" v-model="attending">
-        <label style="margin-left: 4pt;" for="attending-yes">Yes, I'm attending!</label>
-        <input style="margin-left: 18pt;" type="radio" id="attending-no" name="attending" v-bind:value="false" v-model="attending">
-        <label style="margin-left: 4pt;" for="attending-no">I regret that I'm unable to attend.</label>
+      <div class="radio">
+        <div>
+          <input type="radio" id="attending-yes" name="attending" v-bind:value="true" v-model="attending">
+          <label for="attending-yes">Yes, I'm attending!</label>
+        </div>
+        <div>
+          <input type="radio" id="attending-no" name="attending" v-bind:value="false"
+                 v-model="attending">
+          <label for="attending-no">I cannot attend.</label>
+        </div>
       </div>
       <label for="dietaryRequirements">Dietary Requirements</label>
       <input id="dietaryRequirements" type="text"
@@ -26,7 +31,9 @@
         <option>Chicken</option>
         <option>Vegetarian</option>
       </select>
-      <input type="submit" value="RVSP Guest">
+      <div class="span">
+        <input type="submit" v-bind:value="submitButtonLabel" :disabled="submitButtonDisabled">
+      </div>
     </form>
   </div>
 </template>
@@ -47,12 +54,29 @@ export default {
       meal: '',
     }
   },
+  computed: {
+    submitButtonLabel() {
+      if (!this.name) return "Please enter your name before submitting.";
+      if (this.attending && !this.meal) return "Please select a meal before submitting.";
+      return "Submit RSVP";
+    },
+    submitButtonDisabled() {
+      return !this.name || (this.attending && !this.meal);
+    },
+  },
   methods: {
     async createGuest() {
       const {name, email, phone, attending, dietaryRequirements, meal} = this;
       if (!this.name) return;
       if (this.attending && !this.meal) return;
-      const guest = {name, email: email.toLowerCase(), phone: this.stripPhone(phone), attending, dietaryRequirements, meal};
+      const guest = {
+        name,
+        email: email.toLowerCase(),
+        phone: this.stripPhone(phone),
+        attending,
+        dietaryRequirements,
+        meal
+      };
       await API.graphql({
         query: createGuest,
         variables: {input: guest},
@@ -74,10 +98,9 @@ export default {
 
 <style lang="scss">
 div.new {
-  margin: 1em;
+  padding: 0 1em 1em 1em;
   border: 1px solid black;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-  width: 80%;
   background-color: rgba(255, 255, 255, 0.85);
 
   h2 {
@@ -91,10 +114,9 @@ div.new {
     display: grid;
     gap: 6pt;
     grid-template-columns: 1fr 2fr;
-
+    align-items: center;
     font-size: 10pt;
 
-    align-items: baseline;
 
     label {
       font-size: 12pt;
@@ -105,7 +127,13 @@ div.new {
       font-size: 12pt;
     }
 
-    input[type=submit] {
+    div.radio {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+
+    div.span {
       grid-column: span 2;
     }
   }
