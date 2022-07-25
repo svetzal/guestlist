@@ -1,6 +1,7 @@
 <template>
   <div class="new">
     <h2>RSVP Guest</h2>
+    <p>Please fill this out for yourself, and again for your +1</p>
     <form @submit.prevent="createGuest">
       <label for="name">Name</label>
       <input id="name" type="text" v-model="name" placeholder="Name">
